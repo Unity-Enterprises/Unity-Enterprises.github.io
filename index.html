@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unity Enterprises - Aggregates & Building Material Suppliers</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --accent: #3498db;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 25px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://cdn3.shopvii.com/1333/1073/bb_exce_img4.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-top: 70px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #c0392b;
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+        
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 30px;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .vision-mission {
+            background-color: var(--primary);
+            color: white;
+            padding: 60px 0;
+        }
+        
+        .vm-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .vision, .mission {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+            margin: 10px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 10px;
+        }
+        
+        .vm-container h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        
+        .principles {
+            background-color: var(--light);
+        }
+        
+        .principles-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .principle {
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+            margin: 15px;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .principle:hover {
+            transform: translateY(-10px);
+        }
+        
+        .principle i {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        .principle h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .products-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .product {
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+            margin: 15px;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .product:hover {
+            transform: translateY(-10px);
+        }
+        
+        .product-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .product:hover .product-image img {
+            transform: scale(1.1);
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .add-to-cart {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .add-to-cart:hover {
+            background-color: var(--secondary);
+        }
+        
+        .clients-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .client-logo {
+            flex: 1;
+            min-width: 120px;
+            max-width: 200px;
+            margin: 15px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        
+        .order-section {
+            background-color: var(--light);
+        }
+        
+        .order-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .cart-summary {
+            flex: 1;
+            min-width: 300px;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+        
+        .cart-items {
+            margin-bottom: 20px;
+        }
+        
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+        
+        .remove-item {
+            color: var(--secondary);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .order-form {
+            flex: 1;
+            min-width: 300px;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        
+        .submit-order {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-order:hover {
+            background-color: #c0392b;
+        }
+        
+        .certificates {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .certificates-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .certificate {
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+            margin: 15px;
+            padding: 30px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .certificate i {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+        
+        .certificate h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+            padding: 0 15px;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section ul li a:hover {
+            color: var(--accent);
+        }
+        
+        .contact-info p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            margin-right: 10px;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 20px;
+        }
+        
+        .mobile-menu {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background-color: var(--primary);
+            padding: 20px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            transform: translateY(-100%);
+            opacity: 0;
+            transition: all 0.3s;
+            z-index: 999;
+        }
+        
+        .mobile-menu.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .mobile-menu ul {
+            list-style: none;
+        }
+        
+        .mobile-menu ul li {
+            margin-bottom: 15px;
+        }
+        
+        .mobile-menu ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 1001;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--secondary);
+        }
+        
+        .modal-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        /* Quantity selector */
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+        
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .quantity-input {
+            width: 100px;
+            text-align: center;
+            margin: 0 10px;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        /* Empty cart message */
+        .empty-cart {
+            text-align: center;
+            padding: 20px;
+            color: #777;
+        }
+        
+        /* Unit selector */
+        .unit-selector {
+            margin-top: 15px;
+        }
+        
+        .unit-selector label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .unit-selector select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-text {
+                padding-right: 0;
+                margin-bottom: 30px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .vm-container {
+                flex-direction: column;
+            }
+            
+            .vision, .mission {
+                margin: 10px 0;
+            }
+            
+            .product {
+                min-width: 100%;
+                max-width: 100%;
+            }
+            
+            .client-logo {
+                min-width: 45%;
+                max-width: 45%;
+                margin: 10px 2.5%;
+                padding: 15px;
+                font-size: 0.8rem;
+            }
+            
+            .footer-section {
+                min-width: 100%;
+            }
+            
+            section {
+                padding: 40px 0;
+            }
+            
+            .section-title {
+                margin-bottom: 30px;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 0.9rem;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .client-logo {
+                min-width: 100%;
+                max-width: 100%;
+                margin: 10px 0;
+            }
+            
+            .modal-content {
+                padding: 20px;
+            }
+            
+            .modal-title {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="images/image.png" alt="Unity Enterprises Logo">
+
+                <i>Unity Enterprises</i> 
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#clients">Clients</a></li>
+                    <li><a href="#order">Order</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+    
+    <div class="mobile-menu">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#clients">Clients</a></li>
+            <li><a href="#order">Order</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+    
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1><i>Quality Building Materials & Aggregates</h1>
+            <p>Supplying high-quality construction materials to Mumbai and Navi Mumbai with our own fleet of 15 transport vehicles.</i></p>
+            <a href="#order" class="btn">Order Now</a>
+        </div>
+    </section>
+    
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Us</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Unity Enterprises is a leading supplier of building materials located in Navi Mumbai. We retail and wholesale a wide range of building materials like Rubble Bolder GSB, Crush sand, metal 10/20mm, filing sand etc.</p>
+                    <p>With our own fleet of 15 transport vehicles, we are set to service a wide range of clients in and around Mumbai and Navi Mumbai. We ensure that all our customers are given first class service.</p>
+                    <p>We are in the building material industry to service a wide range of clients and of course to make profits, which is why we go all the way to make available wide range of building materials from top manufacturing brands in Mumbai.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://live.staticflickr.com/3287/2945740566_69fc6524a0_w.jpg" alt="Construction Site">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="vision-mission">
+        <div class="container vm-container">
+            <div class="vision">
+                <h3>Our Vision</h3>
+                <p>To be at the heart of construction. We see our people at the forefront of the construction industry, transforming it into a more sustainable future. Unity Enterprises pride itself in supplying some of the foremost industry users with our high quality products while continuously striving to innovate and improve our supply capabilities.</p>
+            </div>
+            <div class="mission">
+                <h3>Our Mission</h3>
+                <p>Unity Enterprises pride itself in supplying some of the foremost industry users with our high quality products while continuously striving to innovate and improve our supply capabilities.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="principles">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Fundamental Principles</h2>
+            </div>
+            <div class="principles-container">
+                <div class="principle">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Health and Safety</h3>
+                    <p>Above all, this is our overarching value. We always conduct our business in a way that creates a healthy and stable environment for all stakeholders, built on a true safety culture.</p>
+                </div>
+                <div class="principle">
+                    <i class="fas fa-users"></i>
+                    <h3>People</h3>
+                    <p>We aspire to be an employer of choice, which we do by providing an exciting and purposeful place to work.</p>
+                </div>
+                <div class="principle">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Integrity</h3>
+                    <p>In all areas of our business, including internal and external interactions, we always act with integrity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Products</h2>
+            </div>
+            <div class="products-container">
+                <div class="product">
+                    <div class="product-image">
+                        <img src="images/Metal 10mm.jpeg" alt="Metal 10mm">
+                    </div>
+                    <div class="product-info">
+                        <h3>Metal 10mm</h3>
+                        <button class="add-to-cart" data-product="Metal 10mm" data-unit="tons">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="product-image">
+                        <img src="images/Metal 20mm.jpeg" alt="Metal 20mm">
+                    </div>
+                    <div class="product-info">
+                        <h3>Metal 20mm</h3>
+                        <button class="add-to-cart" data-product="Metal 20mm" data-unit="tons">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="product-image">
+                        <img src="images/Crush Sand.jpeg" alt="Crush Sand">
+                    </div>
+                    <div class="product-info">
+                        <h3>Crush Sand</h3>
+                        <button class="add-to-cart" data-product="Crush Sand" data-unit="tons">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="product-image">
+                        <img src="images/Wash Sand.png" alt="Wash Sand">
+                    </div>
+                    <div class="product-info">
+                        <h3>Wash Sand</h3>
+                        <button class="add-to-cart" data-product="Wash Sand" data-unit="tons">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="product-image">
+                        <img src="images/GSB.jpg" alt="GSB">
+                    </div>
+                    <div class="product-info">
+                        <h3>GSB</h3>
+                        <button class="add-to-cart" data-product="GSB" data-unit="tons">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="product-image">
+                        <img src="images/Metal 40mm.jpg" alt="Metal 40mm">
+                    </div>
+                    <div class="product-info">
+                        <h3>Metal 40mm</h3>
+                        <button class="add-to-cart" data-product="Metal 40mm" data-unit="tons">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="product-image">
+                        <img src="images/Black Rubble Stone.jpg" alt="Black Rubble Stone">
+                    </div>
+                    <div class="product-info">
+                        <h3>Black Rubble Stone</h3>
+                        <button class="add-to-cart" data-product="Black Rubble Stone" data-unit="tons">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="product-image">
+                        <img src="images/Red Bricks.jpg" alt="Red Bricks 4'' & 6''">
+                    </div>
+                    <div class="product-info">
+                        <h3>Red Bricks 4" & 6"</h3>
+                        <button class="add-to-cart" data-product="Red Bricks 4'' & 6''" data-unit="pieces">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="product-image">
+                        <img src="images/Silpoz Sand.jpg" alt="Silpoz Sand">
+                    </div>
+                    <div class="product-info">
+                        <h3>Silpoz Sand</h3>
+                        <button class="add-to-cart" data-product="Silpoz Sand" data-unit="40kg bags">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="clients" id="clients">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Clients</h2>
+            </div>
+            <div class="clients-container">
+                <div class="client-logo">
+                    Ashoka Buildcon Ltd.
+                </div>
+                <div class="client-logo">
+                    B.G. Shirke Construction Tech Pvt. Ltd.
+                </div>
+                <div class="client-logo">
+                    Leighton India Contractors Pvt. Ltd.
+                </div>
+                <div class="client-logo">
+                    Ecomix Concrete LLP
+                </div>
+                <div class="client-logo">
+                    Novoco Vistas Corporation Ltd.
+                </div>
+                <div class="client-logo">
+                    RDC Concrete India Pvt. Ltd.
+                </div>
+                <div class="client-logo">
+                    Shapoorji Pallonji Engineering & Construction
+                </div>
+                <div class="client-logo">
+                    Tarmat Ltd
+                </div>
+                <div class="client-logo">
+                    Meraki Habitats LLP
+                </div>
+                <div class="client-logo">
+                    Creative Infra & Construction
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="order-section" id="order">
+        <div class="container">
+            <div class="section-title">
+                <h2>Place Your Order</h2>
+            </div>
+            <div class="order-container">
+                <div class="cart-summary">
+                    <h3>Your Order</h3>
+                    <div class="cart-items" id="cart-items">
+                        <div class="empty-cart">
+                            <p>Your cart is empty</p>
+                            <p>Add products from our selection above</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-form">
+                    <h3>Customer Information</h3>
+                    <form id="order-form">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Company Name (Optional)</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Delivery Address</label>
+                            <textarea id="address" name="address" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="notes">Additional Notes (Optional)</label>
+                            <textarea id="notes" name="notes"></textarea>
+                        </div>
+                        <button type="submit" class="submit-order" id="submit-order" disabled>Place Order via WhatsApp</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="certificates">
+        <div class="container">
+            <div class="section-title">
+                <h2 style="color: white;">Our Certifications</h2>
+            </div>
+            <div class="certificates-container">
+                <div class="certificate">
+                    <i class="fas fa-certificate"></i>
+                    <h3>ISO 9001:2015 Certified</h3>
+                    <p>Our Quality Management System complies with ISO 9001:2015 standards for trading of construction materials.</p>
+                    <p>Certificate No.: 24ZOZQ2025Q</p>
+                    <p>Valid until: 08/08/2027</p>
+                </div>
+                <div class="certificate">
+                    <i class="fas fa-file-alt"></i>
+                    <h3>Udyam Registered</h3>
+                    <p>Registered as a Micro Enterprise under the Government of India's Udyam Registration scheme.</p>
+                    <p>UDYAM REGISTRATION NUMBER: UDYAM-MH-27-0152509</p>
+                </div>
+                <div class="certificate">
+                    <i class="fas fa-file-invoice"></i>
+                    <h3>GST Registered</h3>
+                    <p>Registered under the Goods and Services Tax regime of India.</p>
+                    <p>GSTIN: 27AAIFU3856EJZY</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer id="contact">
+        <div class="container footer-container">
+            <div class="footer-section">
+                <h3>Unity Enterprises</h3>
+                <p>Aggregates & Building Material Suppliers in Navi Mumbai, serving Mumbai and surrounding areas with quality construction materials.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#clients">Clients</a></li>
+                    <li><a href="#order">Order Now</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <div class="contact-info">
+                    <p><i class="fas fa-map-marker-alt"></i> 2/203, Fortune Classic CHS., Sec-35E, Kharghar, Navi Mumbai - 410210</p>
+                    <p><i class="fas fa-phone"></i> +91 966476 9393 / 8655595961</p>
+                    <p><i class="fas fa-envelope"></i> unityenterprises5152@gmail.com</p>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 Unity Enterprises. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- Product Modal -->
+    <div class="modal" id="product-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3 class="modal-title" id="modal-product-name">Product Name</h3>
+            <div class="form-group">
+                <label for="product-quantity">Quantity</label>
+                <div class="quantity-selector">
+                    <button class="quantity-btn" id="decrease-qty">-</button>
+                    <input type="number" id="product-quantity" class="quantity-input" value="1" min="1">
+                    <button class="quantity-btn" id="increase-qty">+</button>
+                </div>
+            </div>
+            <div class="unit-selector" id="unit-selector-container">
+                <label for="product-unit">Unit</label>
+                <select id="product-unit" class="form-group">
+                    <option value="tons">Tons</option>
+                    <option value="Brass">Brass</option>
+                </select>
+            </div>
+            <button class="btn" id="add-to-cart-modal">Add to Order</button>
+        </div>
+    </div>
+    
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking a link
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Cart functionality
+        let cart = [];
+        let currentProduct = null;
+        let currentUnit = null;
+        
+        // Product modal
+        const productModal = document.getElementById('product-modal');
+        const modalProductName = document.getElementById('modal-product-name');
+        const productQuantity = document.getElementById('product-quantity');
+        const productUnit = document.getElementById('product-unit');
+        const unitSelectorContainer = document.getElementById('unit-selector-container');
+        const decreaseQty = document.getElementById('decrease-qty');
+        const increaseQty = document.getElementById('increase-qty');
+        const addToCartModal = document.getElementById('add-to-cart-modal');
+        const closeModal = document.querySelector('.close-modal');
+        
+        // Add to cart buttons
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
+        
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                currentProduct = button.getAttribute('data-product');
+                currentUnit = button.getAttribute('data-unit');
+                modalProductName.textContent = currentProduct;
+                productQuantity.value = 1;
+                
+                // Show/hide unit selector based on product
+                if (currentProduct === "Red Bricks 4'' & 6''") {
+                    unitSelectorContainer.style.display = 'none';
+                    productUnit.value = 'pieces';
+                } else if (currentProduct === "Silpoz Sand") {
+                    unitSelectorContainer.style.display = 'none';
+                    productUnit.value = '40kg bags';
+                } else {
+                    unitSelectorContainer.style.display = 'block';
+                    productUnit.value = 'tons';
+                }
+                
+                productModal.style.display = 'flex';
+            });
+        });
+        
+        // Quantity controls
+        decreaseQty.addEventListener('click', () => {
+            if (productQuantity.value > 1) {
+                productQuantity.value--;
+            }
+        });
+        
+        increaseQty.addEventListener('click', () => {
+            productQuantity.value++;
+        });
+        
+        // Add to cart from modal
+        addToCartModal.addEventListener('click', () => {
+            const quantity = parseInt(productQuantity.value);
+            let unit;
+
+            // Set unit based on product type
+            if (currentProduct === "Red Bricks 4'' & 6''") {
+                unit = "pieces";
+            } else if (currentProduct === "Silpoz Sand") {
+                unit = "40kg bags";
+            } else {
+                unit = productUnit.value;
+            }
+
+            // Check if product already in cart
+            const existingItemIndex = cart.findIndex(item => 
+                item.product === currentProduct && item.unit === unit
+            );
+            
+            if (existingItemIndex >= 0) {
+                // Update quantity if product already in cart with same unit
+                cart[existingItemIndex].quantity += quantity;
+            } else {
+                // Add new item to cart
+                cart.push({
+                    product: currentProduct,
+                    quantity: quantity,
+                    unit: unit
+                });
+            }
+            
+            updateCartDisplay();
+            productModal.style.display = 'none';
+        });
+        
+        // Close modal
+        closeModal.addEventListener('click', () => {
+            productModal.style.display = 'none';
+        });
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === productModal) {
+                productModal.style.display = 'none';
+            }
+        });
+        
+        // Update cart display
+        function updateCartDisplay() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const submitOrderBtn = document.getElementById('submit-order');
+            
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = `
+                    <div class="empty-cart">
+                        <p>Your cart is empty</p>
+                        <p>Add products from our selection above</p>
+                    </div>
+                `;
+                submitOrderBtn.disabled = true;
+            } else {
+                let itemsHTML = '';
+                
+                cart.forEach((item, index) => {
+                    itemsHTML += `
+                        <div class="cart-item">
+                            <div>
+                                <h4>${item.product}</h4>
+                                <p>${item.quantity} ${item.unit}</p>
+                            </div>
+                            <div>
+                                <button class="remove-item" data-index="${index}">Remove</button>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                cartItemsContainer.innerHTML = itemsHTML;
+                submitOrderBtn.disabled = false;
+                
+                // Add event listeners to remove buttons
+                document.querySelectorAll('.remove-item').forEach(button => {
+                    button.addEventListener('click', () => {
+                        const index = parseInt(button.getAttribute('data-index'));
+                        cart.splice(index, 1);
+                        updateCartDisplay();
+                    });
+                });
+            }
+        }
+        
+        // Order form submission
+        const orderForm = document.getElementById('order-form');
+        
+        orderForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            if (cart.length === 0) {
+                alert('Please add products to your order before submitting.');
+                return;
+            }
+            
+            const name = document.getElementById('name').value;
+            const company = document.getElementById('company').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const address = document.getElementById('address').value;
+            const notes = document.getElementById('notes').value;
+            
+            // Format order details
+            let orderDetails = `*New Order Request*\n\n`;
+            orderDetails += `*Customer Name:* ${name}\n`;
+            if (company) orderDetails += `*Company:* ${company}\n`;
+            orderDetails += `*Phone:* ${phone}\n`;
+            orderDetails += `*Email:* ${email}\n`;
+            orderDetails += `*Delivery Address:* ${address}\n`;
+            if (notes) orderDetails += `*Additional Notes:* ${notes}\n\n`;
+            orderDetails += `*Order Items:*\n`;
+            
+            cart.forEach(item => {
+                orderDetails += `- ${item.product}: ${item.quantity} ${item.unit}\n`;
+            });
+            
+            orderDetails += `\n_This order was placed through the Unity Enterprises website_`;
+            
+            // Encode for WhatsApp URL
+            const encodedMessage = encodeURIComponent(orderDetails);
+            
+            // WhatsApp number from the PDF
+            const whatsappNumber = '919664769393';
+            
+            // Open WhatsApp with the order details
+            window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
+            
+            // Optional: Clear the cart after submission
+            cart = [];
+            updateCartDisplay();
+            orderForm.reset();
+            
+            // Show thank you message
+            alert('Thank you for your order! A WhatsApp window has opened where you can confirm your order details with our team.');
+        });
+        
+        // Initialize cart display
+        updateCartDisplay();
+    </script>
+</body>
+</html>
